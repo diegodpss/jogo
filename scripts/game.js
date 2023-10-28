@@ -44,6 +44,11 @@ let game = {
         this.clearCard();
 
     },
+    checkGameOver(){
+
+       return this.cards.filter(card => !card.flipped).length == 0;
+        
+    },
 
 
     tech: ['bootstrap',
@@ -69,7 +74,6 @@ let game = {
     
         this.cards = this.cards.flatMap(pair => pair);
         this.shuffleCards();
-        return this.cards;
 
     },
     
@@ -84,9 +88,8 @@ let game = {
                 id: this.createIdWithTech(tech), // Correção aqui
                 icon: tech,
                 flipped: false,
-            }
-        ];
-    }
+            }]
+    },
     
     createIdWithTech: function (tech) {
         return tech + parseInt(Math.random() * 1000);
